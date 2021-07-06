@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Frijole&family=Qahiri&display=swap');
+
+:root {
+    /* --main-bg-color: #090B1A; */
+    --main-bg-color: linear-gradient(135deg, #090B1A, #1B262C);
+    --clock-bg-color: #ffffff;
+    --clock-border-color: #EC5858;
+    --hour-stick-color: #090B1A;
+    --minute-stick-color: #28ABB9;
+    --second-stick-color: #FA1E0E;
+    --footer-text-color: var(--clock-bg-color);
+    --footer-link-color: var(--clock-border-color);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--main-bg-color);
+    background-size: cover;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clock {
+    background-image: url(images/digits.png);
+    background-size: cover;
+    position: relative;
+    width: 80vh;
+    height: 80vh;
+    background-color: var(--clock-bg-color);
+    border-radius: 50%;
+    border: 2.25rem solid var(--clock-border-color);
+    box-shadow: 
+        inset 0 1rem 4rem rgba(9, 11, 26, .4),
+        0 1rem 4rem rgba(255, 255, 255, 0.125);
+}
+
+.brand {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    font-size: 2.5rem;
+    transform: translateX(-50%);
+    font-family: 'Frijole', cursive;
+    /* font-family: 'Qahiri', sans-serif; */
+}
+
+.hour-stick {
+    position: absolute;
+    width: 1.5%;
+    height: 20%;
+    top: 30%;
+    left: 50%;
+    transform-origin: 50% 100%;
+    transform: translateX(-50%);
+    background-color: var(--hour-stick-color);
+    border-radius: 10px;
+}
+
+.minute-stick {
+    position: absolute;
+    width: 1%;
+    height: 25%;
+    top: 25%;
+    left: 50%;
+    transform-origin: 50% 100%;
+    transform: translateX(-50%);
+    background-color: var(--minute-stick-color);
+    border-radius: 10px;
+}
+
+.second-stick {
+    position: absolute;
+    width: .5%;
+    height: 40%;
+    top: 20%;
+    left: 50%;
+    transform-origin: 50% 75%;
+    transform: translate(-50%);
+    background-color: var(--second-stick-color);
+    border-radius: 10px;
+    /* transition: 1s; */
+}
+
+.center {
+    position: absolute;
+    width: 2.5%;
+    height: 2.5%;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%); 
+    background-color: var(--second-stick-color);
+    border-radius: 50%;
+}
+
+.footer {
+    position: absolute;
+    bottom: 1rem;
+    color: var(--footer-text-color);
+    font-family: 'Frijole', cursive;
+}
+
+.footer a {
+    text-decoration: none;
+    color: var(--footer-link-color);
+}
+
+@media (max-width: 768px) {
+
+    html { font-size: 12px; }
+
+    .clock {
+        width: 75vw;
+        height: 75vw;
+    }
+}
+
+@media (max-width: 540px) {
+    html { font-size: 10px; }
+}
+
+@media (max-width: 375px) {
+
+    html { font-size: 8px; }
+
+    .clock {
+        min-width: 300px;
+        min-height: 300px;
+    }
+}
+
+@media (max-height: 768px) {
+    html { font-size: 12px; }
+}
+
+@media (max-height: 540px) {
+    html { font-size: 10px; }
+}
+
+@media (max-height: 375px) {
+
+    html { font-size: 8px; }
+
+    .clock { 
+        min-width: 200px;
+        min-height: 200px;
+    }
+}
