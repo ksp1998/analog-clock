@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Frijole&family=Qahiri&display=swap');
 
 :root {
-    /* --main-bg-color: #090B1A; */
+    --theme: 'light';
     --main-bg-color: linear-gradient(135deg, #090B1A, #1B262C);
-    --clock-bg-color: #ffffff;
-    --clock-border-color: #EC5858;
-    --hour-stick-color: #090B1A;
+    --clock-bg-color: #090B1A;
+    --clock-border-color: #091921;
+    --brand-color: rgba(255, 255, 255, .5);
+    --hour-stick-color: #EC5858;
     --minute-stick-color: #28ABB9;
     --second-stick-color: #FA1E0E;
-    --footer-text-color: var(--clock-bg-color);
-    --footer-link-color: var(--clock-border-color);
+    --footer-text-color: var(--brand-color);
+    --footer-link-color: var(--hour-stick-color);
 }
 
 * {
@@ -26,20 +27,71 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: 500ms;
+}
+
+.theme {
+    visibility: hidden;
+}
+
+.toggle {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 5.5rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 2rem;
+    transition: all 500ms ease;
+    cursor: pointer;
+}
+
+.handler {
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    margin-left: 0.25rem;
+    justify-content: center;
+    align-items: center;
+    background: var(--clock-bg-color);
+    border-radius: 50%;
+    transition: all 500ms ease;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+.handler:before {
+    content: '🌙';
+    font-size: 1.25rem;
+}
+
+.theme:checked + .toggle {
+    background: #090B1A;
+}
+
+.theme:checked + .toggle .handler {
+    margin-left: 50%;
+}
+
+.theme:checked + .toggle .handler::before {
+    content: '☀️';
 }
 
 .clock {
-    background-image: url(images/digits.png);
+    background-image: url(images/clock.png);
     background-size: cover;
     position: relative;
     width: 80vh;
     height: 80vh;
     background-color: var(--clock-bg-color);
     border-radius: 50%;
-    border: 2.25rem solid var(--clock-border-color);
-    box-shadow: 
-        inset 0 1rem 4rem rgba(9, 11, 26, .4),
-        0 1rem 4rem rgba(255, 255, 255, 0.125);
+    border: 4px solid var(--clock-border-color);
+    box-shadow: 0 -1rem 1rem rgba(255, 255, 255, 0.05),
+                inset 0 -1rem 1rem rgba(255, 255, 255, .05),
+                0 1rem 1rem rgba(0, 0, 0, .3),
+                inset 0 1rem 1rem rgba(0, 0, 0, .3);
+    transition: 500ms;
 }
 
 .brand {
@@ -47,6 +99,7 @@ body {
     top: 30%;
     left: 50%;
     font-size: 2.5rem;
+    color:var(--brand-color);
     transform: translateX(-50%);
     font-family: 'Frijole', cursive;
     /* font-family: 'Qahiri', sans-serif; */
